@@ -1,4 +1,7 @@
-@import "lib/base";
+@import "base";
+.ico{
+  .d-ib;
+}
 
 .bind{
 	padding: 30px 70px 70px;
@@ -233,4 +236,65 @@
 		text-align: center;
 		.mb(40px);
 	}
+}
+.ico-sec-shield{
+  .rect(32px);
+  background:url(../images/ico-sec-shield.png);//sprite(../images/sec-icos.png)
+  .abs;
+  left: -40px;
+  top: 6px;
+}
+
+.ico-sec-check{
+  .rect(56px);
+  background:url(../images/ico-sec-check-disable.png);//sprite(../images/sec-icos.png)
+}
+
+.ico-check{
+  .rect(22px);
+  background:url(../images/ico-check.png);//sprite(../images/pay-icos.png)
+  .mr(4px);
+}
+.img{
+  .rect(165px, 106px);
+  background: url(../images/show-shield.png);//sprite(../images/sec-icos.png)
+  margin: 80px auto 10px;
+}
+.ico-step{
+  background: url(../images/ico-sec-cicle-disable.png);//sprite(../images/sec-icos.png)
+  .rect(56px);
+  line-height: 56px;
+  text-align: center;
+
+
+  &.active{
+    background: url(../images/ico-sec-circle.png);//sprite(../images/sec-icos.png)
+    span,strong{
+      color: #00c4b4;
+    }
+  }
+
+  &.checked{
+    background: url(../images/ico-sec-check.png);//sprite(../images/sec-icos.png)
+    span,strong{
+      color: #00c4b4;
+    }
+    span{
+      text-indent: -999em;
+    }
+  }
+
+  span{
+    .d-b;
+    .fc(24px, #fff);
+  }
+
+  strong{
+    .d-b;
+    .fc(18px, #000);
+    width: 100px;
+    .abs;
+    left: 50%;
+    .ml(-50px);
+  }
 }

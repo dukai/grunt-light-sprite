@@ -1,0 +1,276 @@
+.abs {
+  position: absolute;
+}
+.rel {
+  position: relative;
+}
+.noborder {
+  border: 0 none !important;
+}
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+.clear {
+  *zoom: 1;
+}
+.clear:after {
+  content: '\20';
+  display: block;
+  height: 0;
+  clear: both;
+}
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ico {
+  *display: inline;
+  zoom: 1;
+  display: inline-block;
+}
+.pay {
+  padding: 30px 70px 70px;
+}
+.pay h2 {
+  line-height: 24px;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #000;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 20px;
+}
+.pay .goods-detail {
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 40px;
+}
+.pay .goods-detail strong {
+  color: #f04f34;
+}
+.pay .info {
+  margin: 20px 0;
+}
+.pay .info .success {
+  color: #00c4b4;
+  line-height: 22px;
+}
+.pay .info .error {
+  color: #f04f34;
+  line-height: 22px;
+}
+.pay .info .ico-check {
+  width: 22px;
+  height: 22px;
+  background: url(../images/pay-icos.png);
+  background-position: 0px 0px;
+  margin-right: 4px;
+}
+.pay .info .ico-alert {
+  width: 22px;
+  height: 22px;
+  background: url(../images/pay-icos.png);
+  background-position: -22px 0px;
+  margin-right: 4px;
+}
+.pay .forgot-pwd {
+  color: #00a7e4;
+  margin-left: 20px;
+}
+.pay .error {
+  margin: 10px 0;
+}
+.pay .frm-group .btn {
+  width: 174px;
+}
+#input-pwd {
+  width: 260px;
+}
+.member .ico-sec-shield {
+  width: 32px;
+  height: 32px;
+  background: url(../images/mem-icos.png);
+  background-position: -165px -112px;
+}
+.member .ico-mem-arrow {
+  width: 12px;
+  height: 12px;
+}
+.member .ico-check {
+  width: 22px;
+  height: 22px;
+  background: url(../images/pay-icos.png);
+  background-position: 0px 0px;
+  margin-right: 4px;
+}
+.member .sidebar {
+  width: 252px;
+  float: left;
+}
+.member .sidebar h1 {
+  font-size: 22px;
+  line-height: 70px;
+  text-align: center;
+  background: url(../images/ico-sec-shield.png) 30px center no-repeat;
+}
+.member .sidebar ul li {
+  line-height: 60px;
+  font-size: 18px;
+  text-align: center;
+  border-top: 1px solid #e9e9e9;
+}
+.member .sidebar ul li a {
+  line-height: 60px;
+  font-size: 18px;
+  text-align: center;
+}
+.member .sidebar ul li .ico-mem-arrow {
+  background: url(../images/mem-icos.png);
+  background-position: -32px 0px;
+}
+.member .sidebar ul li.active {
+  background: #00a7e4;
+}
+.member .sidebar ul li.active a {
+  color: #fff;
+}
+.member .sidebar ul li.active .ico-mem-arrow {
+  background: url(../images/mem-icos.png);
+  background-position: -32px -12px;
+}
+.member .main {
+  width: 969px;
+  float: right;
+  padding: 10px 40px;
+  min-height: 740px;
+}
+.member .main .info.success {
+  font-size: 16px;
+  color: #00c4b4;
+  margin-bottom: 40px;
+}
+.member .main h2 {
+  font-size: 20px;
+  padding: 20px 0;
+}
+.member .main .mt40 {
+  margin-top: 40px;
+}
+.member .main .mb20 {
+  margin-bottom: 20px;
+}
+.member .main .mr10 {
+  margin-right: 10px;
+}
+.member .main .pr10 {
+  padding-right: 10px;
+}
+.member .main .sub-ttl {
+  color: #8d8d8d;
+}
+.member .main .ttl {
+  font-size: 14px;
+  color: #000;
+}
+.member .main .ttl strong {
+  font-size: 18px;
+}
+.member .main .hint {
+  line-height: 24px;
+  margin-bottom: 10px;
+}
+.member .main .warn {
+  font-size: 16px;
+  color: #f04f34;
+  margin-bottom: 60px;
+  line-height: 1.2;
+}
+.member .main .frm {
+  width: 404px;
+}
+.member .main .frm .hint {
+  line-height: 24px;
+  margin-bottom: 10px;
+}
+.member .main .frm .info .error {
+  color: #f00;
+  line-height: 22px;
+  height: 22px;
+  margin-bottom: 10px;
+}
+.member .main .frm.sm {
+  width: 320px;
+}
+.member .main .cancel {
+  text-align: center;
+  margin-top: 20px;
+}
+.member .main .cancel span {
+  font-size: 18px;
+  color: #00a7e4;
+}
+.member .main .complete {
+  overflow: hidden;
+}
+.member .main .complete .img {
+  width: 165px;
+  height: 106px;
+  background: url(../images/sec-icos.png);
+  background-position: 0px 0px;
+  margin: 80px auto 10px;
+}
+.member .main .complete .btn-group {
+  width: 320px;
+  margin: 0 auto;
+}
+.member .main .complete .hint {
+  text-align: center;
+  font-size: 20px;
+  color: #00c4b4;
+  margin-bottom: 80px;
+}
+.img {
+  width: 165px;
+  height: 106px;
+  background: url(../images/sec-icos.png);
+  background-position: 0px 0px;
+  margin: 80px auto 10px;
+}
+.ico-check {
+  width: 22px;
+  height: 22px;
+  background: url(../images/pay-icos.png);
+  background-position: 0px 0px;
+  margin-right: 4px;
+}
+.ico-alert {
+  width: 22px;
+  height: 22px;
+  background: url(../images/pay-icos.png);
+  background-position: -22px 0px;
+  margin-right: 4px;
+}
+.ico-sec-shield {
+  width: 32px;
+  height: 32px;
+  background: url(../images/mem-icos.png);
+  background-position: -165px -112px;
+}
+.ico-mem-arrow {
+  width: 12px;
+  height: 12px;
+}
+.ico-check {
+  width: 22px;
+  height: 22px;
+  background: url(../images/pay-icos.png);
+  background-position: 0px 0px;
+  margin-right: 4px;
+}
+.ico-mem-arrow {
+  background: url(../images/mem-icos.png);
+  background-position: -32px -12px;
+}

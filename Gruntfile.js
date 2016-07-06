@@ -12,6 +12,37 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
+    less: {
+      dev: {
+        options: {
+          paths: ["less"]
+        },
+        files: [{
+          expand: true,
+          cwd: 'test/less/',
+          src: ['*.less'],
+          dest: 'test/css/',
+          ext: '.css',
+          extDot: 'first' //Extensions in filenames begin after the first dot
+        },
+        ],
+      },
+      dest: {
+        options: {
+          paths: ["less"]
+        },
+        files: [{
+          expand: true,
+          cwd: 'test/less-dest/',
+          src: ['*.less'],
+          dest: 'test/css/',
+          ext: '.css',
+          extDot: 'first' //Extensions in filenames begin after the first dot
+        },
+        ],
+      },
+
+    },
     jshint: {
       all: [
         'Gruntfile.js',
@@ -31,10 +62,6 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     sprite: {
       custom_options: {
-        options: {
-          separator: ': ',
-          punctuation: ' !!!'
-        },
         files: [
           {
             expand: true,     //Enable dynamic expansion.
@@ -62,12 +89,14 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  grunt.loadNpmTasks('grunt-contrib-less');
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'srpite', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'sprite']);
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint', 'test']);
+  grunt.registerTask('dev', ['jshint', 'test', 'less:dev']);
+  grunt.registerTask('dest', ['jshint', 'test', 'less:dest']);
 
 };

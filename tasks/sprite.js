@@ -86,17 +86,38 @@ module.exports = function(grunt) {
 
     const Spritesmith = require('spritesmith');
 
+    let update = (assets, done) => {
+      files.forEach((f) => {
+        // console.log(f);
+        let cwd = f.orig.cwd;
+        let dest = f.orig.dest;
+        var src = f.src.map((filepath) => {
+          let content = grunt.file.read(filepath);
+
+          let result = null;
+
+          return content.replace(URL_REGEXP, function(full, $1, $2){
+            //{ x: 197, y: 112, width: 12, height: 12,
+              // spritesheet: 'D:\\projects\\grunt-projects\\grunt-sprite\\test\\images\\sec-icos.png' },
+              var coor = assets[path.resolve(cwd, $1)];
+              return full.replace($1, $2) + "\r\nbackground-position: -" + coor.x + 'px -' + coor.y + 'px;';
+          });
+
+        }).join('');
+
+        grunt.file.write(f.dest, src);
+      });
+
+      done(true);
+
+    };
+
     let reference = 0;
 
     for(let key in map){
       reference++;
-
       // console.log(map[key]);
-      Spritesmith.run({src: map[key]}, function(err, result) {
-        // result.image; // Buffer representation of image
-        // result.coordinates; // Object mapping filename to {x, y, width, height} of image
-        // result.properties; // Object with metadata about spritesheet {width, height}
-        // console.log(result);
+      Spritesmith.run({src: map[key]}, (err, result)=> {
         grunt.file.write(key, result.image);
         reference--;
         let obj = {};
@@ -106,38 +127,13 @@ module.exports = function(grunt) {
         }
 
         assets = Object.assign(assets, obj);
-        // console.log(assets);
 
-        if(reference == 0){
-          // console.log(assets);
-
-          files.forEach((f) => {
-            // console.log(f);
-            let cwd = f.orig.cwd;
-            let dest = f.orig.dest;
-            var src = f.src.map((filepath) => {
-              // Read file source.
-              let content = grunt.file.read(filepath);
-
-              let result = null;
-
-              return content.replace(URL_REGEXP, function(full, $1, $2){
-     //             { x: 197,
-     // y: 112,
-     // width: 12,
-     // height: 12,
-     // spritesheet: 'D:\\projects\\grunt-projects\\grunt-sprite\\test\\images\\sec-icos.png' },
-                var coor = assets[path.resolve(cwd, $1)]
-                return full.replace($1, $2) + "\r\nbackground-position: -" + coor.x + 'px -' + coor.y + 'px;';
-              });
-
-            }).join('');
-
-            grunt.file.write(f.dest, src);
-          })
+        if(reference === 0){
+          update(assets, done);
         }
       });
     }
+
 
 
   });

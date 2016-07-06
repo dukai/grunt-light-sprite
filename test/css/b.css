@@ -1,0 +1,332 @@
+.abs {
+  position: absolute;
+}
+.rel {
+  position: relative;
+}
+.noborder {
+  border: 0 none !important;
+}
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+.clear {
+  *zoom: 1;
+}
+.clear:after {
+  content: '\20';
+  display: block;
+  height: 0;
+  clear: both;
+}
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ico {
+  *display: inline;
+  zoom: 1;
+  display: inline-block;
+}
+.bind {
+  padding: 30px 70px 70px;
+}
+.bind .ico-sec-shield {
+  width: 32px;
+  height: 32px;
+  background: url(../images/sec-icos.png);
+  background-position: -165px -112px;
+  position: absolute;
+  left: -40px;
+  top: 6px;
+}
+.bind .ico-sec-check {
+  width: 56px;
+  height: 56px;
+  background: url(../images/sec-icos.png);
+  background-position: 0px -106px;
+}
+.bind .ico-check {
+  width: 22px;
+  height: 22px;
+  background: url(../images/pay-icos.png);
+  background-position: 0px 0px;
+  margin-right: 4px;
+}
+.bind h2 {
+  font-size: 22px;
+  position: relative;
+}
+.bind .step-path {
+  clear: both;
+  margin: 40px auto 100px;
+}
+.bind .step-path.three {
+  width: 600px;
+}
+.bind .step-path.three .arrow-line {
+  width: 50%;
+}
+.bind .step-path.two {
+  width: 350px;
+}
+.bind .step-path.two .arrow-line {
+  width: 100%;
+}
+.bind .step-path .arrow-line {
+  height: 12px;
+  position: relative;
+  float: left;
+}
+.bind .step-path .arrow-line:before {
+  content: "　";
+  display: block;
+  height: 12px;
+  background: url(../images/bg-dashed.png) left center repeat-x;
+  margin: 0 40px;
+  margin-right: 54px;
+}
+.bind .step-path .arrow-line:after {
+  content: "　";
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: url(../images/sec-icos.png);
+  background-position: -197px -112px;
+  position: absolute;
+  right: 40px;
+  top: 0;
+}
+.bind .step-path .arrow-line .ico-step {
+  position: absolute;
+  top: -22px;
+  left: -28px;
+}
+.bind .step-path .arrow-line .ico-step.last {
+  right: -28px;
+  left: auto;
+}
+.bind .step-path .ico-step {
+  background: url(../images/sec-icos.png);
+  background-position: -56px -106px;
+  width: 56px;
+  height: 56px;
+  line-height: 56px;
+  text-align: center;
+}
+.bind .step-path .ico-step.active {
+  background: url(../images/sec-icos.png);
+  background-position: -165px 0px;
+}
+.bind .step-path .ico-step.active span,
+.bind .step-path .ico-step.active strong {
+  color: #00c4b4;
+}
+.bind .step-path .ico-step.checked {
+  background: url(../images/sec-icos.png);
+  background-position: -165px -56px;
+}
+.bind .step-path .ico-step.checked span,
+.bind .step-path .ico-step.checked strong {
+  color: #00c4b4;
+}
+.bind .step-path .ico-step.checked span {
+  text-indent: -999em;
+}
+.bind .step-path .ico-step span {
+  display: block;
+  font-size: 24px;
+  color: #fff;
+}
+.bind .step-path .ico-step strong {
+  display: block;
+  font-size: 18px;
+  color: #000;
+  width: 100px;
+  position: absolute;
+  left: 50%;
+  margin-left: -50px;
+}
+.bind .frm {
+  width: 404px;
+  margin: 0 auto;
+}
+.bind .frm.sm {
+  width: 320px;
+}
+.bind .frm .mt40 {
+  margin-top: 40px;
+}
+.bind .frm .mb20 {
+  margin-bottom: 20px;
+}
+.bind .frm .sub-ttl {
+  color: #8d8d8d;
+}
+.bind .frm .ttl {
+  font-size: 14px;
+  color: #000;
+}
+.bind .frm .ttl strong {
+  font-size: 18px;
+}
+.bind .frm .hint {
+  line-height: 24px;
+  margin-bottom: 10px;
+}
+.bind .frm .frm-ctrl {
+  margin-bottom: 20px;
+}
+.bind .frm .frm-ctrl.full-width {
+  width: 100%;
+}
+.bind .frm .frm-ctrl.error {
+  border-color: #f00;
+}
+.bind .frm .btn-confirm {
+  width: 100%;
+}
+.bind .frm .sms-code {
+  width: 210px;
+  float: left;
+}
+.bind .frm .btn-sms {
+  width: 168px;
+  float: right;
+}
+.bind .frm .cancel {
+  text-align: center;
+  margin-top: 20px;
+}
+.bind .frm .cancel span {
+  font-size: 18px;
+  color: #00a7e4;
+}
+.bind .frm .info .error {
+  color: #f00;
+  line-height: 22px;
+  height: 22px;
+  margin-bottom: 10px;
+}
+.bind .phone-result {
+  width: 672px;
+  margin: 0 auto;
+}
+.bind .phone-result .title {
+  font-size: 18px;
+  color: #000;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.bind .phone-result .sub-ttl {
+  font-size: 14px;
+  color: #a5a5a5;
+  margin-bottom: 60px;
+  line-height: 1.2;
+}
+.bind .phone-result .warn {
+  font-size: 16px;
+  color: #f04f34;
+  margin-bottom: 60px;
+  line-height: 1.2;
+}
+.bind .complete {
+  overflow: hidden;
+}
+.bind .complete .img {
+  width: 165px;
+  height: 106px;
+  background: url(../images/sec-icos.png);
+  background-position: 0px 0px;
+  margin: 80px auto 10px;
+}
+.bind .complete .btn-group {
+  width: 320px;
+  margin: 0 auto;
+}
+.bind .complete .hint {
+  text-align: center;
+  font-size: 20px;
+  color: #00c4b4;
+  margin-bottom: 80px;
+}
+.bind .info.success {
+  font-size: 16px;
+  color: #00c4b4;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.ico-sec-shield {
+  width: 32px;
+  height: 32px;
+  background: url(../images/sec-icos.png);
+  background-position: -165px -112px;
+  position: absolute;
+  left: -40px;
+  top: 6px;
+}
+.ico-sec-check {
+  width: 56px;
+  height: 56px;
+  background: url(../images/sec-icos.png);
+  background-position: 0px -106px;
+}
+.ico-check {
+  width: 22px;
+  height: 22px;
+  background: url(../images/pay-icos.png);
+  background-position: 0px 0px;
+  margin-right: 4px;
+}
+.img {
+  width: 165px;
+  height: 106px;
+  background: url(../images/sec-icos.png);
+  background-position: 0px 0px;
+  margin: 80px auto 10px;
+}
+.ico-step {
+  background: url(../images/sec-icos.png);
+  background-position: -56px -106px;
+  width: 56px;
+  height: 56px;
+  line-height: 56px;
+  text-align: center;
+}
+.ico-step.active {
+  background: url(../images/sec-icos.png);
+  background-position: -165px 0px;
+}
+.ico-step.active span,
+.ico-step.active strong {
+  color: #00c4b4;
+}
+.ico-step.checked {
+  background: url(../images/sec-icos.png);
+  background-position: -165px -56px;
+}
+.ico-step.checked span,
+.ico-step.checked strong {
+  color: #00c4b4;
+}
+.ico-step.checked span {
+  text-indent: -999em;
+}
+.ico-step span {
+  display: block;
+  font-size: 24px;
+  color: #fff;
+}
+.ico-step strong {
+  display: block;
+  font-size: 18px;
+  color: #000;
+  width: 100px;
+  position: absolute;
+  left: 50%;
+  margin-left: -50px;
+}
