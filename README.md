@@ -4,7 +4,7 @@
 目前现有的工具做的都较为强大，但是配置和使用都比较复杂，不够易用灵活。  
 本插件旨在最小配置的情况下，实现较为灵活的应用。本插件要求需要添加到精灵图片的小图片必须以
 
-````css
+````less
 background:url(your-image-path.png);//sprite(your-new-image-path.png)
 ````
 
