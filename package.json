@@ -1,23 +1,23 @@
 {
-  "name": "grunt-srpite",
-  "description": "The best Grunt plugin ever.",
+  "name": "grunt-light-sprite",
+  "description": "Light and config less CSS Sprite Sheet Generator (Grunt plugin) for frontend project workflow. ",
   "version": "0.1.0",
-  "homepage": "https://github.com/dukai/grunt-srpite",
+  "homepage": "https://github.com/dukai/grunt-light-sprite",
   "author": {
-    "name": "Kyle",
+    "name": "DK",
     "email": "dukai86@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://dukai@github.com/dukai/grunt-srpite.git"
+    "url": "https://dukai@github.com/dukai/grunt-light-sprite.git"
   },
   "bugs": {
-    "url": "https://github.com/dukai/grunt-srpite/issues"
+    "url": "https://github.com/dukai/grunt-light-sprite/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/dukai/grunt-srpite/blob/master/LICENSE-MIT"
+      "url": "https://github.com/dukai/grunt-light-sprite/blob/master/LICENSE-MIT"
     }
   ],
   "engines": {
