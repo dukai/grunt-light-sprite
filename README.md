@@ -10,7 +10,7 @@ background:url(your-image-path.png);//sprite(your-new-image-path.png)
 
 的形式出现，插件会自动匹配以此模式出现的背景图片，生成以`sprite(your-new-image-path.png)`括号中的新路径为文件名的图片。不同的小图片可以添加至相同文件名的精灵图片中。
 
-## Getting Started
+## 安装及配置
 This plugin requires Grunt `~0.4.5`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
@@ -276,8 +276,15 @@ grunt.initConfig({
 }
 ````
 
+合并好的图片会根据命名自动在指定目录生成指定文件。
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+
+`0.0.1` 初始版本
+
+### Thanks
+
+感谢 [spritesmith](https://github.com/Ensighten/spritesmith)
