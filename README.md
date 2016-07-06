@@ -1,16 +1,23 @@
 # grunt-srpite
 
-> 用于处理css中的小图片，生成精灵图片。  
-目前现有的工具做的都较为强大，但是配置和使用都比较复杂，不够易用灵活。  
+> 轻量的CSS精灵图片(sprite sheet)生成器（Grunt插件）。  
+目前现有的工具做的都较为强大，但是配置和使用都比较复杂，不够简单且灵活易用。  
 本插件旨在最小配置的情况下，实现较为灵活的应用。本插件要求需要添加到精灵图片的小图片必须以
 
 ````less
 background:url(your-image-path.png);//sprite(your-new-image-path.png)
 ````
 
-的形式出现，插件会自动匹配以此模式出现的背景图片，生成以`sprite(your-new-image-path.png)`括号中的新路径为文件名的图片。不同的小图片可以添加至相同文件名的精灵图片中。
+的形式出现，插件会自动匹配以此模式出现的背景图片，生成以`sprite(your-new-image-path.png)`括号中的新路径为文件名的图片。不同的小图片可以添加至相同文件名的精灵图片中。可以精确指定需要添加精灵图片的小图片，也能够精确的指定哪些图片合并至哪个大图片。
+
+在开发时保留原始的图片以及less文件，只在生成时合并图片并处理less文件，替换图片并添加`background-position`属性。
+
+关于服务器端强制清理缓存，为图片以及css文件添加指纹等更多内容，请参考[Frontend Workflow](https://github.com/dukai/frontend-workflow)以及[Grunt前端项目模板](https://github.com/dukai/grunt-init-fep)
 
 ## 安装及配置
+
+安装最新版本的`Grunt`并使用npm安装依赖，在`Gruntfile.js`中加载插件，并在`initConfig`中添加插件配置。
+
 This plugin requires Grunt `~0.4.5`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
