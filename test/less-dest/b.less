@@ -1,0 +1,244 @@
+@import "lib/base";
+
+.bind{
+	padding: 30px 70px 70px;
+	.ico-sec-shield{
+		.rect(32px);
+		background:url(../images/sec-icos.png);//sprite(../images/sec-icos.png)
+background-position: -165px -112px;
+		.abs;
+		left: -40px;
+		top: 6px;
+	}
+
+	.ico-sec-check{
+		.rect(56px);
+		background:url(../images/sec-icos.png);//sprite(../images/sec-icos.png)
+background-position: -0px -106px;
+	}
+
+	.ico-check{
+		.rect(22px);
+		background:url(../images/pay-icos.png);//sprite(../images/pay-icos.png)
+background-position: -0px -0px;
+		.mr(4px);
+	}
+
+	h2{
+		font-size: 22px;
+		.rel;
+	}
+
+	.step-path{
+		// overflow: hidden;
+		clear: both;
+		margin: 40px auto 100px;
+		&.three{
+			width: 600px;
+			.arrow-line{
+				width: 50%;
+			}
+		}
+		&.two{
+			width: 350px;
+			.arrow-line{
+				width: 100%;
+			}
+		}
+
+		@paddingWidth: 80px;
+
+		.arrow-line{
+			height: 12px;
+			.rel;
+			.pull-left;
+			// .border-box;
+			&:before{
+				content: "　";
+				.d-b;
+				height: 12px;
+				background: url(../images/bg-dashed.png) left center repeat-x;
+				margin: 0 @paddingWidth/2;
+				.mr(@paddingWidth/2+14px);
+			}
+			&:after{
+				content: "　";
+				.d-b;
+				.rect(12px);
+				background: url(../images/sec-icos.png);//sprite(../images/sec-icos.png)
+background-position: -197px -112px;
+				.abs;
+				right: @paddingWidth/2;
+				top: 0;
+			}
+
+
+			.ico-step{
+				.abs;
+				top: (12px-56px)/2;
+				left: -56px/2;
+
+				&.last{
+					right: -56px/2;
+					left: auto;
+				}
+			}
+		}
+
+		.ico-step{
+			background: url(../images/sec-icos.png);//sprite(../images/sec-icos.png)
+background-position: -56px -106px;
+			.rect(56px);
+			line-height: 56px;
+			text-align: center;
+
+
+			&.active{
+				background: url(../images/sec-icos.png);//sprite(../images/sec-icos.png)
+background-position: -165px -0px;
+				span,strong{
+					color: #00c4b4;
+				}
+			}
+
+			&.checked{
+				background: url(../images/sec-icos.png);//sprite(../images/sec-icos.png)
+background-position: -165px -56px;
+				span,strong{
+					color: #00c4b4;
+				}
+				span{
+					text-indent: -999em;
+				}
+			}
+
+			span{
+				.d-b;
+				.fc(24px, #fff);
+			}
+
+			strong{
+				.d-b;
+				.fc(18px, #000);
+				width: 100px;
+				.abs;
+				left: 50%;
+				.ml(-50px);
+			}
+		}
+	}
+
+
+	.frm{
+		width: 404px;
+		margin: 0 auto;
+		&.sm{
+			width: 320px;
+		}
+		.mt40{
+			.mt(40px);
+		}
+		.mb20{
+			.mb(20px);
+		}
+		.sub-ttl{
+			color: #8d8d8d;
+		}
+		.ttl{
+			.fc(14px, #000);
+			strong{
+				font-size: 18px;
+			}
+		}
+		.hint{
+			line-height: 24px;
+			.mb(10px);
+		}
+		.frm-ctrl{
+			.mb(20px);
+			&.full-width{
+				width: 100%;
+			}
+
+			&.error{
+				border-color: #f00;
+			}
+		}
+		.btn-confirm{
+			width: 100%;
+		}
+		.sms-code{
+			width: 210px;
+			.pull-left;
+		}
+		.btn-sms{
+			width: 168px;
+			.pull-right;
+		}
+
+		.cancel{
+			text-align: center;
+			.mt(20px);
+			span{
+				.fc(18px, #00a7e4);
+			}
+		}
+
+		.info .error{
+			color: #f00;
+			line-height: 22px;
+			height: 22px;
+			.mb(10px);
+		}
+	}
+
+
+	.phone-result{
+		width: 672px;
+		margin: 0 auto;
+		.title{
+			.fc(18px, #000);
+			line-height: 1.2;
+			.mb(10px);
+		}
+		.sub-ttl{
+			.fc(14px, #a5a5a5);
+			.mb(60px);
+			line-height: 1.2;
+		}
+
+
+		.warn{
+			.fc(16px, #f04f34);
+			.mb(60px);
+			line-height: 1.2;
+		}
+	}
+
+
+	.complete{
+		overflow: hidden;
+		.img{
+			.rect(165px, 106px);
+			background: url(../images/sec-icos.png);//sprite(../images/sec-icos.png)
+background-position: -0px -0px;
+			margin: 80px auto 10px;
+		}
+		.btn-group{
+			width: 320px;
+			margin: 0 auto;
+		}
+		.hint{
+			text-align: center;
+			.fc(20px, #00c4b4);
+			.mb(80px);
+		}
+	}
+
+
+	.info.success{
+		.fc(16px, #00c4b4);
+		text-align: center;
+		.mb(40px);
+	}
+}

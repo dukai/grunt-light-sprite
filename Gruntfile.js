@@ -29,22 +29,22 @@ module.exports = function(grunt) {
     },
 
     // Configuration to be run (and then tested).
-    srpite: {
-      default_options: {
-        options: {
-        },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
-        }
-      },
+    sprite: {
       custom_options: {
         options: {
           separator: ': ',
           punctuation: ' !!!'
         },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
-        }
+        files: [
+          {
+            expand: true,     //Enable dynamic expansion.
+            cwd: 'test/less/',      //Src matches are relative to this path.
+            src: ['*.less'], //Actual pattern(s) to match.
+            dest: 'test/less-dest/',   //Destination path prefix.
+            ext: '.less',   //Dest filepaths will have this extension.
+            extDot: 'first'   //Extensions in filenames begin after the first dot
+          }
+        ]
       }
     },
 
