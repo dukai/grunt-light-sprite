@@ -34,7 +34,7 @@
     "grunt-contrib-nodeunit": "^0.3.3"
   },
   "keywords": [
-    "gruntplugin"
+    "sprite", "css-sprite","gruntplugin"
   ],
   "dependencies": {
     "spritesmith": "^3.1.0"
