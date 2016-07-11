@@ -25,6 +25,8 @@ module.exports = function(grunt) {
 
 
     const URL_REGEXP = /background:.*url\(['"]{0,1}(.+?)['"]{0,1}\);\/\/sprite\(['"]{0,1}(.+?)['"]{0,1}\)/g;
+    const OPEN_TAG_RE = /\{/;
+    const CLOSE_TAG_RE = /\}/;
     let map = {};
     let assets = {};
 
@@ -50,6 +52,44 @@ module.exports = function(grunt) {
         // Read file source.
         let content = grunt.file.read(filepath);
 
+        //content.replace(/([^@]\{ *\t*[^\r\n])/g, function () {
+        //  console.log(arguments);
+        //}).replace(/(\} *?\t*?[^\r\n])/g, function () {
+          //console.log(arguments);
+        //})
+
+        var stack = [];
+
+        let openclose = null;
+        let reg = /\{|\}/g;
+        let last = 0;
+
+        while(openclose = reg.exec(content)){
+          //console.log(openclose[0],openclose.index, last, stack);
+          if(openclose[0] == "{"){
+            if(stack.length != 0){
+              stack.push(content.substring(last, openclose.index));
+            }
+            stack.push("{");
+            last = openclose.index + 1;
+          }
+
+          if(openclose[0] == "}"){
+            let temp = [];
+            stack.push(content.substring(last, openclose.index));
+            while(stack[stack.length - 1] != "{"){
+              temp.unshift(stack.pop());
+            }
+
+            let sum = temp.join('');
+            console.log(sum);
+            //stack.push("}");
+            last = openclose.index + 1;
+          }
+          //console.log(openclose[0],openclose.index, last, stack);
+        }
+
+
         let result = null;
 
         while((result = URL_REGEXP.exec(content))){
@@ -69,7 +109,6 @@ module.exports = function(grunt) {
             map[total].push(piece);
           }
 
-          // console.log('\r\n');
         }
 
       });

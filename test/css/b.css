@@ -38,8 +38,7 @@
 .bind .ico-sec-shield {
   width: 32px;
   height: 32px;
-  background: url(../images/sec-icos.png);
-  background-position: -165px -112px;
+  background: url(../images/ico-sec-shield.png);
   position: absolute;
   left: -40px;
   top: 6px;
@@ -47,14 +46,12 @@
 .bind .ico-sec-check {
   width: 56px;
   height: 56px;
-  background: url(../images/sec-icos.png);
-  background-position: 0px -106px;
+  background: url(../images/ico-sec-check-disable.png);
 }
 .bind .ico-check {
   width: 22px;
   height: 22px;
-  background: url(../images/pay-icos.png);
-  background-position: 0px 0px;
+  background: url(../images/ico-check.png);
   margin-right: 4px;
 }
 .bind h2 {
@@ -95,8 +92,7 @@
   display: block;
   width: 12px;
   height: 12px;
-  background: url(../images/sec-icos.png);
-  background-position: -197px -112px;
+  background: url(../images/ico-sec-arrow.png);
   position: absolute;
   right: 40px;
   top: 0;
@@ -111,24 +107,21 @@
   left: auto;
 }
 .bind .step-path .ico-step {
-  background: url(../images/sec-icos.png);
-  background-position: -56px -106px;
+  background: url(../images/ico-sec-cicle-disable.png);
   width: 56px;
   height: 56px;
   line-height: 56px;
   text-align: center;
 }
 .bind .step-path .ico-step.active {
-  background: url(../images/sec-icos.png);
-  background-position: -165px 0px;
+  background: url(../images/ico-sec-circle.png);
 }
 .bind .step-path .ico-step.active span,
 .bind .step-path .ico-step.active strong {
   color: #00c4b4;
 }
 .bind .step-path .ico-step.checked {
-  background: url(../images/sec-icos.png);
-  background-position: -165px -56px;
+  background: url(../images/ico-sec-check.png);
 }
 .bind .step-path .ico-step.checked span,
 .bind .step-path .ico-step.checked strong {
@@ -240,8 +233,7 @@
 .bind .complete .img {
   width: 165px;
   height: 106px;
-  background: url(../images/sec-icos.png);
-  background-position: 0px 0px;
+  background: url(../images/show-shield.png);
   margin: 80px auto 10px;
 }
 .bind .complete .btn-group {
@@ -263,8 +255,7 @@
 .ico-sec-shield {
   width: 32px;
   height: 32px;
-  background: url(../images/sec-icos.png);
-  background-position: -165px -112px;
+  background: url(../images/ico-sec-shield.png);
   position: absolute;
   left: -40px;
   top: 6px;
@@ -272,42 +263,36 @@
 .ico-sec-check {
   width: 56px;
   height: 56px;
-  background: url(../images/sec-icos.png);
-  background-position: 0px -106px;
+  background: url(../images/ico-sec-check-disable.png);
 }
 .ico-check {
   width: 22px;
   height: 22px;
-  background: url(../images/pay-icos.png);
-  background-position: 0px 0px;
+  background: url(../images/ico-check.png);
   margin-right: 4px;
 }
 .img {
   width: 165px;
   height: 106px;
-  background: url(../images/sec-icos.png);
-  background-position: 0px 0px;
+  background: url(../images/show-shield.png);
   margin: 80px auto 10px;
 }
 .ico-step {
-  background: url(../images/sec-icos.png);
-  background-position: -56px -106px;
+  background: url(../images/ico-sec-cicle-disable.png);
   width: 56px;
   height: 56px;
   line-height: 56px;
   text-align: center;
 }
 .ico-step.active {
-  background: url(../images/sec-icos.png);
-  background-position: -165px 0px;
+  background: url(../images/ico-sec-circle.png);
 }
 .ico-step.active span,
 .ico-step.active strong {
   color: #00c4b4;
 }
 .ico-step.checked {
-  background: url(../images/sec-icos.png);
-  background-position: -165px -56px;
+  background: url(../images/ico-sec-check.png);
 }
 .ico-step.checked span,
 .ico-step.checked strong {
