@@ -81,7 +81,6 @@ module.exports = function(grunt) {
       // grunt.file.write(f.dest, src);
 
       // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
     });
 
     const Spritesmith = require('spritesmith');
@@ -106,6 +105,7 @@ module.exports = function(grunt) {
         }).join('');
 
         grunt.file.write(f.dest, src);
+        grunt.log.writeln('File "' + f.dest + '" created.');
       });
 
       done(true);
@@ -134,7 +134,8 @@ module.exports = function(grunt) {
       });
     }
 
-    if(Object.keys(map).length = 0){
+    if(Object.keys(map).length == 0){
+      grunt.log.writeln("no sprite to be process");
       update({}, done);
     }
 
