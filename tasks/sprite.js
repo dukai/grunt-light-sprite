@@ -135,7 +135,7 @@ module.exports = function(grunt) {
     }
 
     if(Object.keys(map).length = 0){
-      done(true);
+      update({}, done);
     }
 
   });

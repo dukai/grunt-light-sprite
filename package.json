@@ -1,7 +1,7 @@
 {
   "name": "grunt-light-sprite",
   "description": "Light and config less CSS Sprite Sheet Generator (Grunt plugin) for frontend project workflow. ",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/dukai/grunt-light-sprite",
   "author": {
     "name": "DK",
