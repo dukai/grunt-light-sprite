@@ -1,7 +1,6 @@
 "use strict"
 module.exports = {
   getStack: function (content) {
-
     const reg = /\{|\}/g;
     const maxIndex = content.length - 1;
 
@@ -40,22 +39,77 @@ module.exports = {
     return origin;
   },
 
+  /**
+   * 解析生成的栈
+   * @param {Array} stack
+   */
+  parseStack(stack){
+
+    let tmp = []
+
+    let result = [];
+
+    stack.forEach((ele, index) => {
+      if(ele == "{"){
+        tmp.push(index);
+      }else if (ele == "}"){
+        let tt = [];
+        while(stack[tmp[tmp.length - 1]] !== "{"){
+          tt.unshift(tmp.pop());
+        }
+        tmp.pop();
+
+        let ttString = tt.map(current => stack[current]);
+        let r = this.getBgImage(ttString.join(''));
+
+        if( r ){
+          result.push(tt);
+        }
+
+      }else {
+        tmp.push(index);
+      }
+
+    });
+
+
+    return result;
+
+  },
+
+  /**
+   * 获取背景图片以及背景图片尺寸
+   * @param content
+     */
   getBgImage: function (content) {
     let target = {};
-    const URL_REGEXP = /background:.*url\(['"]{0,1}(.+?)['"]{0,1}\);\/\/sprite\(['"]{0,1}(.+?)['"]{0,1}\)/g;
+    const URL_REGEXP = /background:.*url\(['"]{0,1}(.+?)['"]{0,1}\);\/\/sprite\(['"]{0,1}(.+?)['"]{0,1}\)/;
 
     let result = null;
+    let bsResult = null;
 
-    while((result = URL_REGEXP.exec(content))){
 
+    result = content.match(URL_REGEXP);
+
+    if(result){
       let patchPath = result[1];
       let sheetPath = result[2];
 
-      target.patch = piecePath;
+      target.patch = patchPath;
       target.sheet = sheetPath;
 
-      let bsResult = content.match(/background\-size\:[ \t]*?([\w\d]+)[ \t]*?([\w\d]*);/);
+      bsResult = content.match(/background\-size\:[ \t]*?([\w\d]+)[ \t]*?([\w\d]*);/);
+      if(bsResult){
+        if(bsResult.length == 2){
+          target.bgSize = [bsResult[1]];
+        }else{
+          target.bgSize = [bsResult[1], bsResult[2]];
+        }
+      }
 
+      return target;
     }
+
+    return false;
   }
 };

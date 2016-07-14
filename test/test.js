@@ -9,3 +9,9 @@ var content = fs.readFileSync([__dirname, 'less', 'a.less'].join(path.sep), {enc
 
 
 let result = utils.getStack(content);
+
+
+let parseResult = utils.parseStack(result);
+
+
+console.log(parseResult.map(ele => result[ele]));
