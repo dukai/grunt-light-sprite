@@ -1,6 +1,6 @@
 "use strict"
 module.exports = {
-  getStack: function (content) {
+  getStack (content) {
     const reg = /\{|\}/g;
     const maxIndex = content.length - 1;
 
@@ -11,31 +11,23 @@ module.exports = {
 
     while(result = reg.exec(content)){
       if(result[0] == "{"){
-        if(stack.length != 0){
-          stack.push(content.substring(last, result.index));
-        }
         origin.push(content.substring(last, result.index));
-        stack.push("{");
         origin.push("{");
         last = result.index + 1;
       }
 
       if(result[0] == "}"){
-        let temp = [];
-        stack.push(content.substring(last, result.index));
         origin.push(content.substring(last, result.index));
         origin.push("}");
-
-        while(stack[stack.length - 1] != "{"){
-          temp.unshift(stack.pop());
-        }
-
-        let sum = temp.join('');
         last = result.index + 1;
       }
     }
 
-    origin.push(content.substring(last, maxIndex));
+    if(last < maxIndex){
+      origin.push(content.substring(last, maxIndex));
+    }
+
+    console.log(origin);
     return origin;
   },
 
@@ -48,22 +40,28 @@ module.exports = {
     let tmp = []
 
     let result = [];
+    let matches = [];
+    //let resultIndexes = [];
 
     stack.forEach((ele, index) => {
       if(ele == "{"){
         tmp.push(index);
       }else if (ele == "}"){
         let tt = [];
-        while(stack[tmp[tmp.length - 1]] !== "{"){
+        while(stack[tmp[tmp.length - 1]] !== "{" && tmp.length > 0){
           tt.unshift(tmp.pop());
         }
-        tmp.pop();
+        let letBucket = tmp.pop();
 
+        if(stack[letBucket] !== "{"){
+          throw "Unmatched {}";
+        }
         let ttString = tt.map(current => stack[current]);
         let r = this.getBgImage(ttString.join(''));
 
         if( r ){
           result.push(tt);
+          matches.push(r);
         }
 
       }else {
@@ -73,7 +71,7 @@ module.exports = {
     });
 
 
-    return result;
+    return {result, matches};
 
   },
 
@@ -81,7 +79,7 @@ module.exports = {
    * 获取背景图片以及背景图片尺寸
    * @param content
      */
-  getBgImage: function (content) {
+  getBgImage (content) {
     let target = {};
     const URL_REGEXP = /background:.*url\(['"]{0,1}(.+?)['"]{0,1}\);\/\/sprite\(['"]{0,1}(.+?)['"]{0,1}\)/;
 
@@ -101,9 +99,22 @@ module.exports = {
       bsResult = content.match(/background\-size\:[ \t]*?([\w\d]+)[ \t]*?([\w\d]*);/);
       if(bsResult){
         if(bsResult.length == 2){
-          target.bgSize = [bsResult[1]];
+          if(bsResult[1] !== 'cover' && bsResult[1] !== 'contain' && bsResult !== 'auto'){
+            target.bgSize = [parseInt(bsResult[1])];
+          }
         }else{
-          target.bgSize = [bsResult[1], bsResult[2]];
+          let x = bsResult[1];
+          let y = bsResult[2];
+          if(x !== 'auto' || y !== 'auto'){
+            if(x == 'auto'){
+              x = y;
+            }
+
+            if(y == 'auto'){
+              y = x;
+            }
+            target.bgSize = [parseInt(x), parseInt(y)];
+          }
         }
       }
 

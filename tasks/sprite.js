@@ -10,78 +10,72 @@
 
 
 const path = require('path');
+const utils = require('./lib/utils');
+const sizeOf = require('image-size');
 
 module.exports = function(grunt) {
 
-  // Please see the Grunt documentation for more information regarding task
-  // creation: http://gruntjs.com/creating-tasks
+  const URL_REGEXP = /background:.*url\(['"]{0,1}(.+?)['"]{0,1}\);\/\/sprite\(['"]{0,1}(.+?)['"]{0,1}\)/;
 
   grunt.registerMultiTask('sprite', 'The best Grunt plugin ever.', function() {
     let done = this.async();
     var options = this.options({
-      punctuation: '.',
-      separator: ', '
     });
 
-
-    const URL_REGEXP = /background:.*url\(['"]{0,1}(.+?)['"]{0,1}\);\/\/sprite\(['"]{0,1}(.+?)['"]{0,1}\)/g;
     let map = {};
     let assets = {};
-
     let files = this.files;
 
+    let parsedFiles = {};
+
     // Iterate over all specified file groups.
-    this.files.forEach(function(f) {
+    parsedFiles = this.files.map(function(f) {
 
       let cwd = f.orig.cwd;
       let dest = f.orig.dest;
       // console.log(cwd);
       // console.log(dest);
       // Concat specified files.
-      var src = f.src.filter(function(filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
-        if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
-          return false;
-        } else {
-          return true;
-        }
-      }).map(function(filepath) {
-        // Read file source.
-        let content = grunt.file.read(filepath);
+      //console.log(f.src, f.dest);
+      let filepath = f.src[0];
+      let destpath = f.dest;
+      let content = grunt.file.read(filepath);
+      let contentStack = utils.getStack(content);
+      let parseResult = utils.parseStack(contentStack);
 
-        let result = null;
+      parseResult.matches.forEach(ele => {
+        let patch = path.resolve(cwd, ele.patch);
+        let sheet = path.resolve(cwd, ele.sheet);
 
-        while((result = URL_REGEXP.exec(content))){
+        ele.absPatch = patch;
+        ele.absSheet = sheet;
 
-          let piece = path.resolve(cwd, result[1]);
-          let total = path.resolve(cwd, result[2]);
-          // console.log(piece);
-          // console.warn(total);
-          grunt.file.write(total, grunt.file.read(piece, {encoding: null}));
-
-          if(!map[total]){
-            map[total] = [];
-          }
-
-
-          if(map[total].indexOf(piece) < 0){
-            map[total].push(piece);
-          }
-
-          // console.log('\r\n');
+        if(ele.bgSize){
+          let size = sizeOf(patch);
+          ele.orginSize = size;
         }
 
+        if(!map[sheet]){
+          map[sheet] = [];
+        }
+        if(map[sheet].indexOf(patch) < 0){
+          map[sheet].push(patch);
+        }
       });
 
-      // Handle options.
-      // src += options.punctuation;
 
-      // Write the destination file.
-      // grunt.file.write(f.dest, src);
+      /**
+       * 文件路径
+       * 发布路径
+       * 内容数组
+       * 解析结果 { patch, sheet, bgSize, orginSize, absPath, absSheet}
+       *
+       */
+      return {filepath, destpath, contentStack, parseResult};
 
-      // Print a success message.
     });
+
+    console.log(parsedFiles);
 
     const Spritesmith = require('spritesmith');
 
@@ -118,12 +112,14 @@ module.exports = function(grunt) {
       reference++;
       // console.log(map[key]);
       Spritesmith.run({src: map[key]}, (err, result)=> {
+        console.log(result);
         grunt.file.write(key, result.image);
         reference--;
         let obj = {};
         for(let p in result.coordinates){
           obj[p] = result.coordinates[p];
           obj[p].spritesheet = key;
+          obj[p].sheetSize = result.properties;
         }
 
         assets = Object.assign(assets, obj);
