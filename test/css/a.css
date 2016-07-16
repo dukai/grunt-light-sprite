@@ -35,22 +35,6 @@
 .pay {
   padding: 30px 70px 70px;
 }
-.pay h2 {
-  line-height: 24px;
-  padding: 10px 0;
-  font-size: 16px;
-  color: #000;
-  border-bottom: 1px solid #f0f0f0;
-  margin-bottom: 20px;
-}
-.pay .goods-detail {
-  line-height: 24px;
-  font-size: 14px;
-  margin-bottom: 40px;
-}
-.pay .goods-detail strong {
-  color: #f04f34;
-}
 .pay .info {
   margin: 20px 0;
 }
@@ -65,21 +49,17 @@
 .pay .info .ico-check {
   width: 22px;
   height: 22px;
-  background: url(../images/ico-check.png);
+  background: url(../images/pay-icos.png);
+  background-position: 0px 0px;
+  background-size: auto auto;
   margin-right: 4px;
 }
 .pay .info .ico-alert {
   width: 22px;
   height: 22px;
-  background: url(../images/ico-alert.png);
+  background: url(../images/pay-icos.png);
+  background-position: -22px 0px;
   margin-right: 4px;
-}
-.pay .forgot-pwd {
-  color: #00a7e4;
-  margin-left: 20px;
-}
-.pay .error {
-  margin: 10px 0;
 }
 .pay .frm-group .btn {
   width: 174px;
@@ -90,7 +70,8 @@
 .member .ico-sec-shield {
   width: 32px;
   height: 32px;
-  background: url(../images/ico-sec-shield.png);
+  background: url(../images/mem-icos.png);
+  background-position: -165px -112px;
 }
 .member .ico-mem-arrow {
   width: 12px;
@@ -99,7 +80,8 @@
 .member .ico-check {
   width: 22px;
   height: 22px;
-  background: url(../images/ico-check.png);
+  background: url(../images/pay-icos.png);
+  background-position: 0px 0px;
   margin-right: 4px;
 }
 .member .sidebar {
@@ -124,7 +106,8 @@
   text-align: center;
 }
 .member .sidebar ul li .ico-mem-arrow {
-  background: url(../images/ico-member-arrow-gray.png);
+  background: url(../images/mem-icos.png);
+  background-position: -50px -32px;
 }
 .member .sidebar ul li.active {
   background: #00a7e4;
@@ -133,78 +116,8 @@
   color: #fff;
 }
 .member .sidebar ul li.active .ico-mem-arrow {
-  background: url(../images/ico-member-arrow-white.png);
-}
-.member .main {
-  width: 969px;
-  float: right;
-  padding: 10px 40px;
-  min-height: 740px;
-}
-.member .main .info.success {
-  font-size: 16px;
-  color: #00c4b4;
-  margin-bottom: 40px;
-}
-.member .main h2 {
-  font-size: 20px;
-  padding: 20px 0;
-}
-.member .main .mt40 {
-  margin-top: 40px;
-}
-.member .main .mb20 {
-  margin-bottom: 20px;
-}
-.member .main .mr10 {
-  margin-right: 10px;
-}
-.member .main .pr10 {
-  padding-right: 10px;
-}
-.member .main .sub-ttl {
-  color: #8d8d8d;
-}
-.member .main .ttl {
-  font-size: 14px;
-  color: #000;
-}
-.member .main .ttl strong {
-  font-size: 18px;
-}
-.member .main .hint {
-  line-height: 24px;
-  margin-bottom: 10px;
-}
-.member .main .warn {
-  font-size: 16px;
-  color: #f04f34;
-  margin-bottom: 60px;
-  line-height: 1.2;
-}
-.member .main .frm {
-  width: 404px;
-}
-.member .main .frm .hint {
-  line-height: 24px;
-  margin-bottom: 10px;
-}
-.member .main .frm .info .error {
-  color: #f00;
-  line-height: 22px;
-  height: 22px;
-  margin-bottom: 10px;
-}
-.member .main .frm.sm {
-  width: 320px;
-}
-.member .main .cancel {
-  text-align: center;
-  margin-top: 20px;
-}
-.member .main .cancel span {
-  font-size: 18px;
-  color: #00a7e4;
+  background: url(../images/mem-icos.png);
+  background-position: -62px -32px;
 }
 .member .main .complete {
   overflow: hidden;
@@ -212,41 +125,40 @@
 .member .main .complete .img {
   width: 165px;
   height: 106px;
-  background: url(../images/show-shield.png);
+  background: url(../images/sec-icos.png);
+  background-position: 0px 0px;
+  background-size: 109.83030303030303px 81px;
   margin: 80px auto 10px;
 }
-.member .main .complete .btn-group {
-  width: 320px;
-  margin: 0 auto;
-}
-.member .main .complete .hint {
-  text-align: center;
-  font-size: 20px;
-  color: #00c4b4;
-  margin-bottom: 80px;
+.member .main .complete .img strong {
+  font-weight: bold;
 }
 .img {
   width: 165px;
   height: 106px;
-  background: url(../images/show-shield.png);
+  background: url(../images/sec-icos.png);
+  background-position: 0px 0px;
   margin: 80px auto 10px;
 }
 .ico-check {
   width: 22px;
   height: 22px;
-  background: url(../images/ico-check.png);
+  background: url(../images/pay-icos.png);
+  background-position: 0px 0px;
   margin-right: 4px;
 }
 .ico-alert {
   width: 22px;
   height: 22px;
-  background: url(../images/ico-alert.png);
+  background: url(../images/pay-icos.png);
+  background-position: -22px 0px;
   margin-right: 4px;
 }
 .ico-sec-shield {
   width: 32px;
   height: 32px;
-  background: url(../images/ico-sec-shield.png);
+  background: url(../images/mem-icos.png);
+  background-position: -165px -112px;
 }
 .ico-mem-arrow {
   width: 12px;
@@ -255,15 +167,18 @@
 .ico-check {
   width: 22px;
   height: 22px;
-  background: url(../images/ico-check.png);
+  background: url(../images/pay-icos.png);
+  background-position: 0px 0px;
   margin-right: 4px;
 }
 .ico-mem-arrow {
-  background: url(../images/ico-member-arrow-white.png);
+  background: url(../images/mem-icos.png);
+  background-position: -62px -32px;
 }
 .ico-ok {
-  background: url(../images/ico-ok.png);
-  background-size: 25px auto;
+  background: url(../images/mem-icos.png);
+  background-position: 0px 0px;
+  background-size: 41px 25px;
   width: 50px;
   height: 50px;
 }

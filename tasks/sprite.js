@@ -11,7 +11,6 @@
 
 const path = require('path');
 const utils = require('./lib/utils');
-const sizeOf = require('image-size');
 
 module.exports = function(grunt) {
 
@@ -23,12 +22,18 @@ module.exports = function(grunt) {
     });
 
     let map = {};
-    let assets = {};
     let files = this.files;
+    const URL_REGEXP = /background:.*url\(['"]{0,1}(.+?)['"]{0,1}\);\/\/sprite\(['"]{0,1}(.+?)['"]{0,1}\)/;
 
     let parsedFiles = {};
 
-    // Iterate over all specified file groups.
+    /**
+     * @param filepath 文件路径
+     * @param destpath 发布路径
+     * @param contentStack 内容数组
+     * @param parseResult 解析结果 [{ patch, sheet, bgSize, orginSize, absPath, absSheet}]
+     *
+     */
     parsedFiles = this.files.map(function(f) {
 
       let cwd = f.orig.cwd;
@@ -50,11 +55,6 @@ module.exports = function(grunt) {
         ele.absPatch = patch;
         ele.absSheet = sheet;
 
-        if(ele.bgSize){
-          let size = sizeOf(patch);
-          ele.orginSize = size;
-        }
-
         if(!map[sheet]){
           map[sheet] = [];
         }
@@ -64,55 +64,96 @@ module.exports = function(grunt) {
       });
 
 
-      /**
-       * 文件路径
-       * 发布路径
-       * 内容数组
-       * 解析结果 { patch, sheet, bgSize, orginSize, absPath, absSheet}
-       *
-       */
       return {filepath, destpath, contentStack, parseResult};
 
     });
 
-    console.log(parsedFiles);
+    //console.log(parsedFiles);
 
     const Spritesmith = require('spritesmith');
 
     let update = (assets, done) => {
-      files.forEach((f) => {
-        // console.log(f);
-        let cwd = f.orig.cwd;
-        let dest = f.orig.dest;
-        var src = f.src.map((filepath) => {
-          let content = grunt.file.read(filepath);
 
-          let result = null;
+      parsedFiles.map((parsedFile) => {
+        //console.log(parsedFile.parseResult);
+        parsedFile.parseResult.matches.forEach((match, index) => {
+          //{ patch, sheet, bgSize, orginSize, absPath, absSheet}
+          let asset = assets[match.absPatch];
+          let newWidth, newHeight, newX, newY;
 
-          return content.replace(URL_REGEXP, function(full, $1, $2){
-            //{ x: 197, y: 112, width: 12, height: 12,
-              // spritesheet: 'D:\\projects\\grunt-projects\\grunt-sprite\\test\\images\\sec-icos.png' },
-              var coor = assets[path.resolve(cwd, $1)];
-              return full.replace($1, $2) + "\r\nbackground-position: -" + coor.x + 'px -' + coor.y + 'px;';
+          if(match.bgSize){
+            let xPercentage = match.bgSize[0] / asset.width;
+            let yPercentage = match.bgSize[1] / asset.height;
+
+
+            newWidth = asset.sheetSize.width * xPercentage;
+            newHeight = asset.sheetSize.height * yPercentage;
+
+            newX = asset.x * xPercentage;
+            newY = asset.y * yPercentage;
+          }else{
+            newX = asset.x;
+            newY = asset.y;
+          }
+          newX = newX === 0 ? newX : -newX;
+          newY = newY === 0 ? newY : -newY;
+          let bgPosition = "background-position:" + newX + 'px ' + newY + 'px;';
+          parsedFile.parseResult.result[index].forEach((ele) => {
+            let piece = parsedFile.contentStack[ele];
+            if(piece.indexOf(match.patch) >= 0){
+              let result = piece.match(/([\t ]*)background/);
+              let prefix = result ? result[1] : '';
+              //parsedFile.contentStack[ele].replace(match.patch, match.sheet);
+              parsedFile.contentStack[ele] = piece.replace(URL_REGEXP, (full, $1, $2) => {
+                return full.replace($1, $2) + "\r\n" + prefix + bgPosition + "\r\n";
+              })
+
+              //parsedFile.contentStack[ele] += prefix + bgPosition;
+            }
+
+            if(/background\-size/.test(piece) && match.bgSize){
+              parsedFile.contentStack[ele] = parsedFile.contentStack[ele].replace(/background\-size.+?;/, 'background-size: ' + newWidth + 'px ' + newHeight + 'px;');
+            }
           });
+        });
 
-        }).join('');
-
-        grunt.file.write(f.dest, src);
-        grunt.log.writeln('File "' + f.dest + '" created.');
+        grunt.file.write(parsedFile.destpath, parsedFile.contentStack.join(''));
+        grunt.log.writeln('File "' + parsedFile.destpath + '" created.');
       });
+      //files.forEach((f) => {
+      //  // console.log(f);
+      //  let cwd = f.orig.cwd;
+      //  let dest = f.orig.dest;
+      //  var src = f.src.map((filepath) => {
+      //    let content = grunt.file.read(filepath);
+      //
+      //    let result = null;
+      //
+      //    return content.replace(URL_REGEXP, function(full, $1, $2){
+      //      //{ x: 197, y: 112, width: 12, height: 12,
+      //        // spritesheet: 'D:\\projects\\grunt-projects\\grunt-sprite\\test\\images\\sec-icos.png' },
+      //        var coor = assets[path.resolve(cwd, $1)];
+      //        return full.replace($1, $2) + "\r\nbackground-position: -" + coor.x + 'px -' + coor.y + 'px;';
+      //    });
+      //
+      //  }).join('');
+      //
+      //  grunt.file.write(f.dest, src);
+      //  grunt.log.writeln('File "' + f.dest + '" created.');
+      //});
 
       done(true);
 
     };
 
     let reference = 0;
+    let assets = {};
 
     for(let key in map){
       reference++;
       // console.log(map[key]);
       Spritesmith.run({src: map[key]}, (err, result)=> {
-        console.log(result);
+        //console.log(result);
         grunt.file.write(key, result.image);
         reference--;
         let obj = {};

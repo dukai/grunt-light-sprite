@@ -96,7 +96,7 @@ module.exports = function(grunt) {
   grunt.registerTask('test', ['clean', 'sprite']);
 
   // By default, lint and run all tests.
-  grunt.registerTask('dev', ['jshint', 'test', 'less:dev']);
-  grunt.registerTask('dest', ['jshint', 'test', 'less:dest']);
+  grunt.registerTask('dev', ['test', 'less:dev']);
+  grunt.registerTask('dest', ['test', 'less:dest']);
 
 };

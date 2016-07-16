@@ -27,7 +27,6 @@ module.exports = {
       origin.push(content.substring(last, maxIndex));
     }
 
-    console.log(origin);
     return origin;
   },
 
@@ -100,7 +99,7 @@ module.exports = {
       if(bsResult){
         if(bsResult.length == 2){
           if(bsResult[1] !== 'cover' && bsResult[1] !== 'contain' && bsResult !== 'auto'){
-            target.bgSize = [parseInt(bsResult[1])];
+            target.bgSize = [parseInt(bsResult[1]), parseInt(bsResult[1])];
           }
         }else{
           let x = bsResult[1];
