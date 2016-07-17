@@ -120,27 +120,6 @@ module.exports = function(grunt) {
         grunt.file.write(parsedFile.destpath, parsedFile.contentStack.join(''));
         grunt.log.writeln('File "' + parsedFile.destpath + '" created.');
       });
-      //files.forEach((f) => {
-      //  // console.log(f);
-      //  let cwd = f.orig.cwd;
-      //  let dest = f.orig.dest;
-      //  var src = f.src.map((filepath) => {
-      //    let content = grunt.file.read(filepath);
-      //
-      //    let result = null;
-      //
-      //    return content.replace(URL_REGEXP, function(full, $1, $2){
-      //      //{ x: 197, y: 112, width: 12, height: 12,
-      //        // spritesheet: 'D:\\projects\\grunt-projects\\grunt-sprite\\test\\images\\sec-icos.png' },
-      //        var coor = assets[path.resolve(cwd, $1)];
-      //        return full.replace($1, $2) + "\r\nbackground-position: -" + coor.x + 'px -' + coor.y + 'px;';
-      //    });
-      //
-      //  }).join('');
-      //
-      //  grunt.file.write(f.dest, src);
-      //  grunt.log.writeln('File "' + f.dest + '" created.');
-      //});
 
       done(true);
 
