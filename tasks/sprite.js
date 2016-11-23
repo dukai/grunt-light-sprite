@@ -19,6 +19,7 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('sprite', 'The best Grunt plugin ever.', function() {
     let done = this.async();
     var options = this.options({
+      padding: 0
     });
 
     let map = {};
@@ -131,7 +132,7 @@ module.exports = function(grunt) {
     for(let key in map){
       reference++;
       // console.log(map[key]);
-      Spritesmith.run({src: map[key]}, (err, result)=> {
+      Spritesmith.run({src: map[key], padding: options.padding}, (err, result)=> {
         //console.log(result);
         grunt.file.write(key, result.image);
         reference--;
