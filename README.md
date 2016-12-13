@@ -43,6 +43,7 @@ In your project's Gruntfile, add a section named `sprite` to the data object pas
 grunt.initConfig({
   sprite: {
     default_options: {
+	  padding: 0,
       files: [
         {
           expand: true,     
@@ -294,7 +295,9 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
-`0.0.1` 初始版本
+`0.1.6` 添加padding配置项
+
+`0.0.1` 初始版本 
 
 ### Thanks
 
